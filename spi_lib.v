@@ -105,12 +105,10 @@ zrb_spi_rxtx #(8) instance_name
     NEW_DATA,
     [7:0]DATA_IN,
     SPI_OUT,
+    READ_DATA,
     [7:0]DATA_OUT,
     CS,
     SCK,
-	WRITE_EN,
-    READ,
-	BUSY,
     START_CLK
 	);
 */
@@ -125,13 +123,11 @@ zrb_spi_rxtx #(8) instance_name
 	input	wire	[  NUM_BITS-1 :  0 ] data_in,
     output	wire				spi_out,
 
+    input   wire                read_imp,
 	output	wire	[  NUM_BITS-1 :  0 ] data_out,
   	output  wire				cs,
 	output	wire				sck,
 
-	output	wire				write_en,
-	output	wire				read,
-	output	wire				busy,
     output  wire                start_clk
 	);
 
@@ -152,15 +148,41 @@ localparam  [  2 :  0 ] IDLE = 3'b000,
                         TxChkSum = 3'b100;
 reg         [  2 :  0 ] r_state = IDLE;
 
+wire                read = r_rd & clk_en;
+wire                write_en = ~r_wr & r_state == SET_CLK_WR;
+
 assign              sck = r_state == POSEDGE_CLK;
 assign              cs = r_state == IDLE;
-assign              busy = 1'b0;
-assign              read = r_rd & clk_en;
-assign              write_en = ~r_wr & r_state == SET_CLK_WR;
-assign              data_out = r_data;
+//assign              data_out = r_data;
 assign              start_clk = r_start_clk;
 assign              spi_out = r_tx;
 
+wire [7:0] w_din;
+wire rx_full;
+wire rx_empty;
+zrb_sync_fifo #(2,8) input_fifo (
+    1'b0,
+    clk,
+    new_data,
+    data_in,
+    read,
+    w_din,
+    rx_full,
+    rx_empty
+    );
+    
+wire tx_full;
+wire tx_empty;
+zrb_sync_fifo #(2,8) output_fifo (
+    1'b0,
+    clk,
+    write_en,
+    r_data,
+    read_imp,
+    data_out,
+    tx_full,
+    tx_empty
+    );
 
 always@(posedge clk)
 begin
@@ -185,9 +207,9 @@ begin
             end
         SET_CLK_WR:
             begin
-                if(clk_en & new_data)
+                if(clk_en & ~rx_empty)
                     r_state <= NEGEDGE_CLK;
-                if(clk_en & ~new_data)
+                if(clk_en & rx_empty)
                     r_state <= IDLE;
             end
     endcase
@@ -198,9 +220,9 @@ begin
                 r_cnt <= 4'd8;
                 r_rd <= 1'b0;
                 r_start_clk <= 1'b0;
-                if(new_data)
+                if(~rx_empty)
                 begin
-                    r_data <= data_in;
+                    r_data <= w_din;
                     r_start_clk <= 1'b1;
                 end
                 if(clk_en)
@@ -236,7 +258,7 @@ begin
                     r_cnt <= 4'd8;
                     r_tx <= r_data[7];
                 end
-                if(new_data)
+                if(~rx_empty)
                     r_rd <= 1'b1;
                 if(r_rd)
                     r_data <= data_in;
@@ -281,7 +303,7 @@ begin
         POWER_ON:
             if(r_cnt_power_on == 4'd10)
                 r_state <= SOFT_RESET;
-        SOFT_RESET:
+        SOFT_RESET: begin end
     endcase
     
     case(r_state)
@@ -291,7 +313,7 @@ begin
             begin
                 r_data <= 8'd255;
                 r_wr <= 1'b0;
-                if(~tx_full)
+                if(1)
                 begin
                     r_wr <= 1'b1;
                     r_cnt_power_on <= r_cnt_power_on + 1'b1;
@@ -302,62 +324,6 @@ begin
     endcase
 end
 
-zrb_clk_generator #(50000000,10000000) instance_name(clk, reset, low_full_speed, output_clk);
-
-wire [7:0] rx_data;
-wire rx_write;
-wire rx_busy;
-wire rx_full;
-wire rx_empty;
-zrb_sync_fifo #(2,8) rx_fifo (
-    1'b0,
-    clk,
-    r_wr,
-    rx_data,
-    RD_EN,
-    ,
-    rx_full,
-    rx_empty
-    );
-    
-wire [7:0] tx_data;
-wire tx_write;
-wire tx_read;
-wire tx_busy;
-wire tx_full;
-wire tx_empty;
-zrb_sync_fifo #(2,8) tx_fifo (
-    1'b0,
-    clk,
-    r_wr,
-    r_data,
-    RD_EN,
-    RD_DATA[7:0],
-    FIFO_FULL,
-    FIFO_EMPTY
-    );
-
-wire    w_rd;
-wire    w_wr;
-wire    mosi_spi;
-wire    miso_spi;
-zrb_spi_rxtx #(8) spi
-    (
-	clk,
-	1'b0,
-    CLK_EN,
-    miso_spi,
-    NEW_DATA,
-    [7:0]DATA_IN,
-    mosi_spi,
-    rx_data,
-    CS,
-    SCK,
-	WRITE_EN,
-    READ,
-	BUSY,
-    START_CLK
-	);
 endmodule
 
 
