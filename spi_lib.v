@@ -109,7 +109,8 @@ zrb_spi_rxtx #(8) instance_name
     [7:0]DATA_OUT,
     CS,
     SCK,
-    START_CLK
+    START_CLK,
+    SPI_FULL
 	);
 */
 	#(parameter NUM_BITS = 8)
@@ -128,7 +129,8 @@ zrb_spi_rxtx #(8) instance_name
   	output  wire				cs,
 	output	wire				sck,
 
-    output  wire                start_clk
+    output  wire                start_clk,
+    output  wire                spi_full
 	);
 
 reg     [  3 :  0 ] r_cnt = 4'b0;
@@ -156,6 +158,7 @@ assign              cs = r_state == IDLE;
 //assign              data_out = r_data;
 assign              start_clk = r_start_clk;
 assign              spi_out = r_tx;
+assign              spi_full = rx_full;
 
 wire [7:0] w_din;
 wire rx_full;
@@ -269,6 +272,20 @@ end
 endmodule
 
 module zrb_sd_core
+/*
+zrb_sd_core #(8) spi_core (
+    clk, 
+    data_in[7:0], 
+    we, 
+    miso, 
+    tx_fifo_enable, 
+    data_out, 
+    new_data, 
+    mosi, 
+    ss, 
+    sck
+    );
+*/
 	#(parameter NUM_BITS = 8)
 	(
     input   wire                clk,
@@ -291,9 +308,11 @@ reg                     r_wr = 1'b0;
 reg                     r_rd = 1'b0;
 localparam  [  4 :  0 ] IDLE =       5'b00000,
                         POWER_ON =   5'b00001,
-                        SOFT_RESET = 5'b00010;
+                        SOFT_RESET = 5'b00010,
+                        WAIT_RESP =  5'b00100;
 reg         [  4 :  0 ] r_state = IDLE;
 
+wire                    w_wr_en = r_wr & ~w_spi_full;
 
 always@(posedge clk)
 begin
@@ -301,9 +320,12 @@ begin
         IDLE:
             r_state <= POWER_ON;
         POWER_ON:
-            if(r_cnt_power_on == 4'd10)
+            if(r_cnt_power_on == 4'd9)
                 r_state <= SOFT_RESET;
-        SOFT_RESET: begin end
+        SOFT_RESET:
+            if(r_cnt_power_on == 4'd5)
+                r_state <= WAIT_RESP;
+        WAIT_RESP: begin end
     endcase
     
     case(r_state)
@@ -313,18 +335,60 @@ begin
             begin
                 r_data <= 8'd255;
                 r_wr <= 1'b0;
-                if(1)
-                begin
+                if(~w_spi_full)
                     r_wr <= 1'b1;
+                if(w_wr_en)
                     r_cnt_power_on <= r_cnt_power_on + 1'b1;
-                    if(r_cnt_power_on == 7'd127)
-                        r_cnt_power_on <= 7'd0;
-                end
+                if(r_cnt_power_on == 4'd9)
+                        r_cnt_power_on <= 4'd0;
+
             end
+        SOFT_RESET:
+            begin
+                r_wr <= 1'b0;
+                if(~w_spi_full)
+                    r_wr <= 1'b1;
+                if(w_wr_en)
+                    r_cnt_power_on <= r_cnt_power_on + 1'b1;
+                if(r_cnt_power_on == 4'd5)
+                    r_cnt_power_on <= 4'd0;
+                case(r_cnt_power_on)
+                    4'd0: r_data <= 8'h40;
+                    4'd1: r_data <= 8'h00;
+                    4'd2: r_data <= 8'h00;
+                    4'd3: r_data <= 8'h00;
+                    4'd4: r_data <= 8'h00;
+                    4'd5: r_data <= 8'h95;
+                endcase    
+            end
+            
+        WAIT_RESP:
+            r_wr <= 1'b0;
+            r_data <= 8'h00;
+            
     endcase
 end
 
+wire w_clk_out;
+wire w_srart_clk;
+wire w_spi_full;
+zrb_clk_generator #(50000000,5000000) spi_clkgen(clk, ~w_start_clk, 1'b1, w_clk_out);
+
+
+zrb_spi_rxtx #(8) spi_rxtx
+    (
+	clk,
+	1'b0,
+    w_clk_out,
+    miso,
+    w_wr_en,
+    r_data,
+    mosi,
+    1'b0, //read
+    data_out,
+    ss,
+    sck,
+    w_start_clk,
+    w_spi_full
+	);
 endmodule
-
-
-    
