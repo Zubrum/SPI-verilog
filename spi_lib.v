@@ -32,6 +32,7 @@ wire    [ (ADDR_WIDTH-1) :  0 ] wr_loc = wr_ptr[ (ADDR_WIDTH-1) :  0 ];
 wire    [ (ADDR_WIDTH-1) :  0 ] rd_loc = rd_ptr[ (ADDR_WIDTH-1) :  0 ];
 
 reg     [ (DATA_WIDTH-1) :  0 ] mem [ (DEPTH-1) :  0 ];
+reg     [  7 :  0 ] r_test = 8'b0;
 
 reg full = 1'b0;
 reg empty = 1'b0;
@@ -58,13 +59,14 @@ begin
 end
 else
 begin
-    if(wr_en & !fifo_full)
+    if(wr_en & ~fifo_full)
     begin
+        r_test <= data_in;
         mem[wr_loc] <= data_in;
         wr_ptr <= wr_ptr + 1'b1;
     end
     
-    if(rd_en & !fifo_empty)
+    if(rd_en & ~fifo_empty)
         rd_ptr <= rd_ptr + 1'b1;
 end
 endmodule
@@ -266,7 +268,7 @@ begin
                 if(~rx_empty)
                     r_rd <= 1'b1;
                 if(r_rd)
-                    r_data <= data_in;
+                    r_data <= w_din;
             end
     endcase
 end
@@ -290,9 +292,9 @@ module zrb_sd_core
 zrb_sd_core #(8) spi_core (
     clk, 
     data_in[7:0], 
-    we, 
+    wwe, 
     miso, 
-    tx_fifo_enable, 
+    wrd, 
     data_out, 
     new_data, 
     mosi, 
@@ -305,10 +307,10 @@ zrb_sd_core #(8) spi_core (
     input   wire                clk,
     
     input   wire    [  7 :  0 ] data_in,
-    input   wire                we,
+    input   wire                wwe,
     input   wire                miso,
 
-    input   wire                tx_fifo_enable,
+    input   wire                wrd,
     output  wire    [  7 :  0 ] data_out,
     output  wire                new_data,
     output  wire                mosi,
@@ -317,6 +319,7 @@ zrb_sd_core #(8) spi_core (
     );
 
 reg         [  7 :  0 ] r_data = 8'd100;
+reg         [  7 :  0 ] r_data_out = 8'b0;
 reg         [  3 :  0 ] r_cnt_power_on = 4'b0;
 reg         [  1 :  0 ] r_wr = 2'b0;
 reg                     r_wr_imp = 1'b0;
@@ -327,7 +330,10 @@ wire                    rd_en = r_rd == 2'b01;
 localparam  [  4 :  0 ] IDLE =       5'b00000,
                         POWER_ON =   5'b00001,
                         SOFT_RESET = 5'b00010,
-                        WAIT_RESP =  5'b00100;
+                        WAIT_RESP =  5'b00100,
+                        INIT_SD =    5'b01000,
+                        INIT_END =   5'b10000,
+                        NORMAL_WORK= 5'b11000;
 reg         [  4 :  0 ] r_state = IDLE;
 reg         [  2 :  0 ] r_start = 3'b111;
 //wire                    w_wr_en = r_wr & ~w_input_full;
@@ -342,6 +348,7 @@ wire w_output_full;
 wire w_input_empty;
 wire w_output_empty;
 wire [2:0] spi_state;
+wire [7:0] w_data_out;
 
 zrb_spi_rxtx #(8) spi_rxtx
     (
@@ -353,7 +360,7 @@ zrb_spi_rxtx #(8) spi_rxtx
     r_data,
     mosi,
     rd_en, //read
-    data_out,
+    w_data_out,
     w_ss,
     sck,
     w_start_clk,
@@ -369,6 +376,19 @@ zrb_spi_rxtx #(8) spi_rxtx
 
 always@(posedge clk)
 begin
+    r_rd <= {r_rd[0], 1'b0};
+    if(~w_output_empty)
+    begin
+        r_rd <= {r_rd[0], 1'b1};
+    end
+    if(rd_en)
+    begin
+        case(r_state)
+            WAIT_RESP: r_data_out <= w_data_out;
+            default: r_data_out <= 8'b0;
+        endcase
+    end
+    
     case(r_state)
         IDLE:
             if(r_start == 3'b0)
@@ -377,9 +397,21 @@ begin
             if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
                 r_state <= SOFT_RESET;
         SOFT_RESET:
-            if((r_cnt_power_on == 4'd5) & (r_wr == 2'b10))
+            if((r_cnt_power_on == 4'd6) & (spi_state == 3'b000))
                 r_state <= WAIT_RESP;
-        WAIT_RESP: begin end
+        WAIT_RESP: 
+            if(r_data_out == 8'd1)
+                r_state <= INIT_SD;
+            else
+                r_state <= POWER_ON;
+        INIT_SD:
+            if((r_cnt_power_on == 4'd6) & (spi_state == 3'b000))
+                r_state <= INIT_END;
+        INIT_END:
+            if(r_data_out == 8'd0)
+                r_state <= NORMAL_WORK;
+            else
+                r_state <= POWER_ON;
     endcase
     
     case(r_state)
@@ -387,34 +419,31 @@ begin
             begin
                 r_start <= r_start - 1'b1;
                 r_cnt_power_on <= 4'd0;
+                r_wr <= 2'b0;
+                r_rd <= 2'b0;
             end
-        POWER_ON:
+        POWER_ON, WAIT_RESP:
             begin
                 r_wr <= {r_wr[0], 1'b0};
+                r_data <= 8'd1;//8'd255;
                 if((~w_input_full) & (r_wr == 2'b00) & (r_cnt_power_on != 4'd10))
                     r_wr <= {r_wr[0], 1'b1};
                 if(r_wr == 2'b10)
-                begin
                     r_cnt_power_on <= r_cnt_power_on + 1'b1;
-                    r_data <= r_data + 1'b1;//8'd255;
-                end
                 if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
                     r_cnt_power_on <= 4'd0;
-
 
             end
         SOFT_RESET:
             begin
                 r_wr <= {r_wr[0], 1'b0};
-                if(~w_input_full & (r_wr == 2'b00))
+                if(~w_input_full & (r_wr == 2'b00) & (r_cnt_power_on != 4'd6))
                     r_wr <= {r_wr[0], 1'b1};
                 if(r_wr == 2'b10)
                     r_cnt_power_on <= r_cnt_power_on + 1'b1;
-                if((r_cnt_power_on == 4'd6) & (r_wr == 2'b10))
-                begin
+                if((r_cnt_power_on == 4'd6) & (spi_state == 3'b000))
                     r_cnt_power_on <= 4'd0;
-                    r_wr <= 2'b0;
-                end
+
                 case(r_cnt_power_on)
                     4'd0: r_data <= 8'h40;
                     4'd1: r_data <= 8'h00;
@@ -426,14 +455,14 @@ begin
 
             end
             
-        WAIT_RESP:
+        INIT_SD:
             begin
                 r_wr <= 1'b0;
-                r_data <= 8'h00;
+                r_data <= 8'hAA;
             end
     endcase
 end
 
 
-assign ss = r_state != SOFT_RESET ? 1'b1 : w_ss;
+assign ss = r_state == IDLE ? 1'b1 : 1'b0;
 endmodule
