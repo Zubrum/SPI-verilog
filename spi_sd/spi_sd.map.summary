@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Jan 21 22:55:48 2013
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : spi_sd
+Top-level Entity Name : spi_sd
+Family : Cyclone II
+Total logic elements : 269
+    Total combinational functions : 219
+    Dedicated logic registers : 137
+Total registers : 137
+Total pins : 6
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

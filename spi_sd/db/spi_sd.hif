@@ -1,0 +1,236 @@
+Quartus II
+Version 11.0 Build 157 04/27/2011 SJ Full Version
+14
+1012
+OFF
+OFF
+OFF
+ON
+ON
+ON
+FV_OFF
+Level2
+0
+0
+VRSM_ON
+VHSM_ON
+0
+-- Start Library Paths --
+-- End Library Paths --
+-- Start VHDL Libraries --
+-- End VHDL Libraries --
+# entity
+zrb_spi_rxtx
+# storage
+db|spi_sd.(2).cnf
+db|spi_sd.(2).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+zrb_spi_rxtx.v
+3d1ece9237d6dffa465c2065126ae8
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+NUM_BITS
+8
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx
+}
+# macro_sequence
+
+# end
+# entity
+zrb_sync_fifo
+# storage
+db|spi_sd.(3).cnf
+db|spi_sd.(3).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+zrb_sync_fifo.v
+6ddf1494dbc81162a16b52b6ec082f2
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+ADDR_WIDTH
+2
+PARAMETER_SIGNED_DEC
+USR
+DATA_WIDTH
+8
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo
+zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo
+}
+# macro_sequence
+
+# end
+# entity
+spi_sd
+# storage
+db|spi_sd.(0).cnf
+db|spi_sd.(0).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+spi_sd.v
+625fdd7efb5aabcbc21ef054456a6085
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# hierarchies {
+|
+}
+# macro_sequence
+
+# end
+# entity
+zrb_sd_core
+# storage
+db|spi_sd.(1).cnf
+db|spi_sd.(1).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+zrb_sd_core.v
+feac26483519cbdd1b454287b1254a2
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+NUM_BITS
+8
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+zrb_sd_core:spi_core
+}
+# macro_sequence
+
+# end
+# entity
+zrb_clk_generator
+# storage
+db|spi_sd.(4).cnf
+db|spi_sd.(4).cnf
+# logic_option {
+AUTO_RAM_RECOGNITION
+ON
+}
+# case_sensitive
+# source_file
+zrb_clk_generator.v
+55de293d4bf2cff8a9d989f45f51ea4f
+8
+# internal_option {
+HDL_INITIAL_FANOUT_LIMIT
+OFF
+AUTO_RESOURCE_SHARING
+OFF
+AUTO_RAM_RECOGNITION
+ON
+AUTO_ROM_RECOGNITION
+ON
+IGNORE_VERILOG_INITIAL_CONSTRUCTS
+OFF
+VERILOG_CONSTANT_LOOP_LIMIT
+5000
+VERILOG_NON_CONSTANT_LOOP_LIMIT
+250
+}
+# user_parameter {
+INPUT_CLK
+50000000
+PARAMETER_SIGNED_DEC
+USR
+OUTPUT_CLK
+5000000
+PARAMETER_SIGNED_DEC
+USR
+}
+# hierarchies {
+zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen
+}
+# macro_sequence
+
+# end
+# complete
+

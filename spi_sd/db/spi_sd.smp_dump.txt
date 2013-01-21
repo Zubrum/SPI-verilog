@@ -1,0 +1,8 @@
+
+State Machine - |spi_sd|zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state
+Name r_state.NEGEDGE_CLK r_state.POSEDGE_CLK r_state.SET_CLK_RD r_state.IDLE r_state.SET_CLK_WR 
+r_state.IDLE 0 0 0 0 0 
+r_state.SET_CLK_RD 0 0 1 1 0 
+r_state.POSEDGE_CLK 0 1 0 1 0 
+r_state.NEGEDGE_CLK 1 0 0 1 0 
+r_state.SET_CLK_WR 0 0 0 1 1 

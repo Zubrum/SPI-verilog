@@ -1,0 +1,1094 @@
+TimeQuest Timing Analyzer report for spi_sd
+Mon Jan 21 22:55:55 2013
+Quartus II Version 11.0 Build 157 04/27/2011 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Slow Model Setup: 'clk'
+ 12. Slow Model Hold: 'clk'
+ 13. Slow Model Minimum Pulse Width: 'clk'
+ 14. Setup Times
+ 15. Hold Times
+ 16. Clock to Output Times
+ 17. Minimum Clock to Output Times
+ 18. Fast Model Setup Summary
+ 19. Fast Model Hold Summary
+ 20. Fast Model Recovery Summary
+ 21. Fast Model Removal Summary
+ 22. Fast Model Minimum Pulse Width Summary
+ 23. Fast Model Setup: 'clk'
+ 24. Fast Model Hold: 'clk'
+ 25. Fast Model Minimum Pulse Width: 'clk'
+ 26. Setup Times
+ 27. Hold Times
+ 28. Clock to Output Times
+ 29. Minimum Clock to Output Times
+ 30. Multicorner Timing Analysis Summary
+ 31. Setup Times
+ 32. Hold Times
+ 33. Clock to Output Times
+ 34. Minimum Clock to Output Times
+ 35. Setup Transfers
+ 36. Hold Transfers
+ 37. Report TCCS
+ 38. Report RSKM
+ 39. Unconstrained Paths
+ 40. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2011 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                      ;
++--------------------+---------------------------------------------------+
+; Quartus II Version ; Version 11.0 Build 157 04/27/2011 SJ Full Version ;
+; Revision Name      ; spi_sd                                            ;
+; Device Family      ; Cyclone II                                        ;
+; Device Name        ; EP2C8Q208C8                                       ;
+; Timing Models      ; Final                                             ;
+; Delay Model        ; Combined                                          ;
+; Rise/Fall Delays   ; Unavailable                                       ;
++--------------------+---------------------------------------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 2.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1-2 processors         ; 100.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clocks                                                                                                                                                                          ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; Clock Name ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+; clk        ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clk } ;
++------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
+
+
++-------------------------------------------------+
+; Slow Model Fmax Summary                         ;
++-----------+-----------------+------------+------+
+; Fmax      ; Restricted Fmax ; Clock Name ; Note ;
++-----------+-----------------+------------+------+
+; 134.1 MHz ; 134.1 MHz       ; clk        ;      ;
++-----------+-----------------+------------+------+
+This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
+
+
++--------------------------------+
+; Slow Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -6.457 ; -631.167      ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Slow Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.499 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Slow Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.941 ; -205.249              ;
++-------+--------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Setup: 'clk'                                                                                                                                                                                                                     ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                                      ; To Node                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -6.457 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.506      ;
+; -6.457 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.506      ;
+; -6.457 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.506      ;
+; -6.457 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.506      ;
+; -6.457 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.506      ;
+; -6.400 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.475      ;
+; -6.400 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.475      ;
+; -6.400 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.475      ;
+; -6.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.411      ;
+; -6.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.411      ;
+; -6.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.411      ;
+; -6.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.411      ;
+; -6.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.411      ;
+; -6.350 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.422      ;
+; -6.350 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.422      ;
+; -6.350 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.422      ;
+; -6.350 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.422      ;
+; -6.341 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.403      ;
+; -6.341 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.403      ;
+; -6.305 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.380      ;
+; -6.305 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.380      ;
+; -6.305 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.380      ;
+; -6.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.351      ;
+; -6.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.351      ;
+; -6.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.351      ;
+; -6.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.351      ;
+; -6.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.351      ;
+; -6.281 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.034      ; 7.355      ;
+; -6.281 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                      ; clk          ; clk         ; 1.000        ; 0.034      ; 7.355      ;
+; -6.281 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                      ; clk          ; clk         ; 1.000        ; 0.034      ; 7.355      ;
+; -6.281 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                      ; clk          ; clk         ; 1.000        ; 0.034      ; 7.355      ;
+; -6.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.320      ;
+; -6.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.320      ;
+; -6.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.320      ;
+; -6.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.320      ;
+; -6.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.320      ;
+; -6.260 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.005     ; 7.295      ;
+; -6.260 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.295      ;
+; -6.260 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.295      ;
+; -6.260 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.295      ;
+; -6.246 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.308      ;
+; -6.246 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.308      ;
+; -6.245 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.320      ;
+; -6.245 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.320      ;
+; -6.245 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.320      ;
+; -6.214 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.289      ;
+; -6.214 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.289      ;
+; -6.214 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.035      ; 7.289      ;
+; -6.209 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.244      ;
+; -6.209 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.244      ;
+; -6.209 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.244      ;
+; -6.209 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.244      ;
+; -6.186 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.248      ;
+; -6.186 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.248      ;
+; -6.173 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.005     ; 7.208      ;
+; -6.173 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.208      ;
+; -6.173 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.208      ;
+; -6.173 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.208      ;
+; -6.159 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_data[6]                                              ; clk          ; clk         ; 1.000        ; 0.032      ; 7.231      ;
+; -6.159 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_data[2]                                              ; clk          ; clk         ; 1.000        ; 0.032      ; 7.231      ;
+; -6.159 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.004     ; 7.195      ;
+; -6.159 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.195      ;
+; -6.159 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.195      ;
+; -6.159 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.195      ;
+; -6.155 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.217      ;
+; -6.155 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.022      ; 7.217      ;
+; -6.122 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.157      ;
+; -6.122 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.157      ;
+; -6.122 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.157      ;
+; -6.122 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.157      ;
+; -6.116 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.005     ; 7.151      ;
+; -6.116 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.151      ;
+; -6.116 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.151      ;
+; -6.116 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.151      ;
+; -6.108 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.144      ;
+; -6.108 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.144      ;
+; -6.108 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.144      ;
+; -6.108 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.004     ; 7.144      ;
+; -6.090 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_data[6]                                              ; clk          ; clk         ; 1.000        ; 0.034      ; 7.164      ;
+; -6.090 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_data[2]                                              ; clk          ; clk         ; 1.000        ; 0.034      ; 7.164      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~8  ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~14 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~10 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~12 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~13 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~15 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~9  ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~11 ; clk          ; clk         ; 1.000        ; 0.018      ; 7.139      ;
+; -6.065 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.100      ;
+; -6.065 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.100      ;
+; -6.065 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.100      ;
+; -6.065 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.005     ; 7.100      ;
+; -6.057 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.106      ;
+; -6.057 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.106      ;
+; -6.057 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.106      ;
+; -6.057 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.106      ;
+; -6.057 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.009      ; 7.106      ;
+; -6.027 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.099      ;
+; -6.027 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.099      ;
+; -6.027 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                      ; clk          ; clk         ; 1.000        ; 0.032      ; 7.099      ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Hold: 'clk'                                                                                                                                                                                                                        ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                      ; To Node                                                                        ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.NEGEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.NEGEDGE_CLK                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_state[4]                                                ; zrb_sd_core:spi_core|r_state[4]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_state[2]                                                ; zrb_sd_core:spi_core|r_state[2]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_state[1]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_state[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_start[0]                                                ; zrb_sd_core:spi_core|r_start[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.499 ; zrb_sd_core:spi_core|r_data[1]                                                 ; zrb_sd_core:spi_core|r_data[1]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.805      ;
+; 0.735 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~12    ; zrb_sd_core:spi_core|r_data_out[4]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.041      ;
+; 0.743 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[7]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.049      ;
+; 0.757 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.063      ;
+; 0.758 ; zrb_sd_core:spi_core|r_start[7]                                                ; zrb_sd_core:spi_core|r_start[7]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.064      ;
+; 0.758 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.064      ;
+; 0.759 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.065      ;
+; 0.762 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.068      ;
+; 0.808 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.114      ;
+; 0.809 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.115      ;
+; 0.968 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.274      ;
+; 0.969 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.275      ;
+; 1.038 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; clk          ; clk         ; 0.000        ; 0.031      ; 1.375      ;
+; 1.068 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5     ; zrb_sd_core:spi_core|r_data_out[5]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.374      ;
+; 1.078 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_RD                  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.384      ;
+; 1.081 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.387      ;
+; 1.134 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.440      ;
+; 1.153 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.459      ;
+; 1.155 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.461      ;
+; 1.157 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[9]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[9]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.463      ;
+; 1.158 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.464      ;
+; 1.163 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.469      ;
+; 1.164 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.470      ;
+; 1.164 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.470      ;
+; 1.165 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.471      ;
+; 1.169 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.475      ;
+; 1.169 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.475      ;
+; 1.173 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.479      ;
+; 1.174 ; zrb_sd_core:spi_core|r_start[0]                                                ; zrb_sd_core:spi_core|r_start[1]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.480      ;
+; 1.176 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.482      ;
+; 1.177 ; zrb_sd_core:spi_core|r_start[5]                                                ; zrb_sd_core:spi_core|r_start[5]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.483      ;
+; 1.177 ; zrb_sd_core:spi_core|r_start[3]                                                ; zrb_sd_core:spi_core|r_start[3]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.483      ;
+; 1.185 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.491      ;
+; 1.191 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.497      ;
+; 1.200 ; zrb_sd_core:spi_core|r_rd[0]                                                   ; zrb_sd_core:spi_core|r_rd[1]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 1.506      ;
+; 1.202 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.508      ;
+; 1.210 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~10    ; zrb_sd_core:spi_core|r_data_out[2]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 1.516      ;
+; 1.213 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.519      ;
+; 1.213 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[8]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[8]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.519      ;
+; 1.214 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 1.520      ;
+; 1.216 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[7]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[7]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.522      ;
+; 1.217 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.523      ;
+; 1.217 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.523      ;
+; 1.218 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.524      ;
+; 1.221 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_tx                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.527      ;
+; 1.233 ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 1.539      ;
+; 1.233 ; zrb_sd_core:spi_core|r_start[2]                                                ; zrb_sd_core:spi_core|r_start[2]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.539      ;
+; 1.234 ; zrb_sd_core:spi_core|r_start[6]                                                ; zrb_sd_core:spi_core|r_start[6]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.540      ;
+; 1.234 ; zrb_sd_core:spi_core|r_start[4]                                                ; zrb_sd_core:spi_core|r_start[4]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.540      ;
+; 1.235 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rd                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.541      ;
+; 1.236 ; zrb_sd_core:spi_core|r_data[1]                                                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~5      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.542      ;
+; 1.236 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.542      ;
+; 1.236 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.542      ;
+; 1.241 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.547      ;
+; 1.242 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.548      ;
+; 1.243 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[7]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.549      ;
+; 1.243 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.549      ;
+; 1.247 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_state[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 1.553      ;
+; 1.247 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.553      ;
+; 1.247 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.553      ;
+; 1.247 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.553      ;
+; 1.252 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.558      ;
+; 1.256 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.562      ;
+; 1.258 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.564      ;
+; 1.270 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.576      ;
+; 1.276 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 1.582      ;
+; 1.276 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 1.582      ;
+; 1.278 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.584      ;
+; 1.279 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.585      ;
+; 1.281 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.587      ;
+; 1.283 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.589      ;
+; 1.283 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.589      ;
+; 1.339 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[3]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.645      ;
+; 1.363 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; clk          ; clk         ; 0.000        ; -0.001     ; 1.668      ;
+; 1.363 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; clk          ; clk         ; 0.000        ; -0.001     ; 1.668      ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Slow Model Minimum Pulse Width: 'clk'                                                                                                       ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                     ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+; -1.941 ; 1.000        ; 2.941          ; Port Rate        ; clk   ; Rise       ; clk                                                        ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[0]                     ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[0]                     ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[1]                     ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[1]                     ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[2]                     ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[2]                     ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[3]                     ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[3]                     ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[0]                             ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[0]                             ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[1]                             ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[1]                             ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[2]                             ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[2]                             ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[6]                             ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[6]                             ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[0]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[0]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[1]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[1]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[2]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[2]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[3]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[3]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[4]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[4]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[5]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[5]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[6]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[6]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[7]                         ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[7]                         ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[0]                               ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[0]                               ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[1]                               ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[1]                               ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[0]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[0]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[1]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[1]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[2]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[2]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[3]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[3]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[4]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[4]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[5]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[5]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[6]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[6]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[7]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[7]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[0]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[0]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[1]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[1]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[2]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[2]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[3]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[3]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[4]                            ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[4]                            ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[0]                               ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[0]                               ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[1]                               ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[1]                               ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[13] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[13] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[16] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[16] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25] ;
+; -0.742 ; 0.500        ; 1.242          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25] ;
+; -0.742 ; 0.500        ; 1.242          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26] ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; spi_in    ; clk        ; 5.100 ; 5.100 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; spi_in    ; clk        ; -4.834 ; -4.834 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; cs        ; clk        ; 11.954 ; 11.954 ; Rise       ; clk             ;
+; led       ; clk        ; 12.873 ; 12.873 ; Rise       ; clk             ;
+; sck       ; clk        ; 9.325  ; 9.325  ; Rise       ; clk             ;
+; spi_out   ; clk        ; 8.831  ; 8.831  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Minimum Clock to Output Times                                           ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; cs        ; clk        ; 10.485 ; 10.485 ; Rise       ; clk             ;
+; led       ; clk        ; 9.991  ; 9.991  ; Rise       ; clk             ;
+; sck       ; clk        ; 9.325  ; 9.325  ; Rise       ; clk             ;
+; spi_out   ; clk        ; 8.831  ; 8.831  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++--------------------------------+
+; Fast Model Setup Summary       ;
++-------+--------+---------------+
+; Clock ; Slack  ; End Point TNS ;
++-------+--------+---------------+
+; clk   ; -1.417 ; -116.473      ;
++-------+--------+---------------+
+
+
++-------------------------------+
+; Fast Model Hold Summary       ;
++-------+-------+---------------+
+; Clock ; Slack ; End Point TNS ;
++-------+-------+---------------+
+; clk   ; 0.215 ; 0.000         ;
++-------+-------+---------------+
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
++----------------------------------------+
+; Fast Model Minimum Pulse Width Summary ;
++-------+--------+-----------------------+
+; Clock ; Slack  ; End Point TNS         ;
++-------+--------+-----------------------+
+; clk   ; -1.380 ; -138.380              ;
++-------+--------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Setup: 'clk'                                                                                                                                                                                                                     ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                                      ; To Node                                                                     ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -1.417 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.457      ;
+; -1.417 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.457      ;
+; -1.417 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.457      ;
+; -1.417 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.457      ;
+; -1.417 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.457      ;
+; -1.405 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.026      ; 2.463      ;
+; -1.405 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                      ; clk          ; clk         ; 1.000        ; 0.026      ; 2.463      ;
+; -1.405 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                      ; clk          ; clk         ; 1.000        ; 0.026      ; 2.463      ;
+; -1.405 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                      ; clk          ; clk         ; 1.000        ; 0.026      ; 2.463      ;
+; -1.388 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.447      ;
+; -1.388 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.447      ;
+; -1.388 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.447      ;
+; -1.381 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.430      ;
+; -1.381 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.430      ;
+; -1.374 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.414      ;
+; -1.374 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.414      ;
+; -1.374 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.414      ;
+; -1.374 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.414      ;
+; -1.374 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.414      ;
+; -1.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.402      ;
+; -1.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.402      ;
+; -1.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.402      ;
+; -1.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.402      ;
+; -1.362 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.402      ;
+; -1.358 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.398      ;
+; -1.358 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.398      ;
+; -1.358 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.398      ;
+; -1.358 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.398      ;
+; -1.358 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.398      ;
+; -1.354 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_data[6]                                              ; clk          ; clk         ; 1.000        ; 0.026      ; 2.412      ;
+; -1.354 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_data[2]                                              ; clk          ; clk         ; 1.000        ; 0.026      ; 2.412      ;
+; -1.353 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.029      ; 2.414      ;
+; -1.353 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                      ; clk          ; clk         ; 1.000        ; 0.029      ; 2.414      ;
+; -1.353 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                      ; clk          ; clk         ; 1.000        ; 0.029      ; 2.414      ;
+; -1.353 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                      ; clk          ; clk         ; 1.000        ; 0.029      ; 2.414      ;
+; -1.345 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.404      ;
+; -1.345 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.404      ;
+; -1.345 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.404      ;
+; -1.338 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.387      ;
+; -1.338 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.387      ;
+; -1.336 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.003     ; 2.365      ;
+; -1.336 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.365      ;
+; -1.336 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.365      ;
+; -1.336 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.365      ;
+; -1.333 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.392      ;
+; -1.333 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.392      ;
+; -1.333 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.392      ;
+; -1.329 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~2  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.388      ;
+; -1.329 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~3  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.388      ;
+; -1.329 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~4  ; clk          ; clk         ; 1.000        ; 0.027      ; 2.388      ;
+; -1.326 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.375      ;
+; -1.326 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.375      ;
+; -1.322 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~30 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.371      ;
+; -1.322 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~31 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.371      ;
+; -1.314 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.343      ;
+; -1.314 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.343      ;
+; -1.314 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.343      ;
+; -1.314 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.343      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~8  ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~14 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~10 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~12 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~13 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~15 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~9  ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~11 ; clk          ; clk         ; 1.000        ; 0.013      ; 2.347      ;
+; -1.302 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_data[6]                                              ; clk          ; clk         ; 1.000        ; 0.029      ; 2.363      ;
+; -1.302 ; zrb_sd_core:spi_core|r_state[3]                                                ; zrb_sd_core:spi_core|r_data[2]                                              ; clk          ; clk         ; 1.000        ; 0.029      ; 2.363      ;
+; -1.298 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.002     ; 2.328      ;
+; -1.298 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.328      ;
+; -1.298 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.328      ;
+; -1.298 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.328      ;
+; -1.295 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.003     ; 2.324      ;
+; -1.295 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.324      ;
+; -1.295 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.324      ;
+; -1.295 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.324      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~0  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.334      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.334      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~6  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.334      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~7  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.334      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~1  ; clk          ; clk         ; 1.000        ; 0.008      ; 2.334      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~8   ; clk          ; clk         ; 1.000        ; -0.003     ; 2.323      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~13  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.323      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~14  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.323      ;
+; -1.294 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~15  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.323      ;
+; -1.276 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.306      ;
+; -1.276 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.306      ;
+; -1.276 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.306      ;
+; -1.276 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.002     ; 2.306      ;
+; -1.273 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.302      ;
+; -1.273 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.302      ;
+; -1.273 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.302      ;
+; -1.273 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.302      ;
+; -1.272 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~22  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.301      ;
+; -1.272 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~23  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.301      ;
+; -1.272 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~21  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.301      ;
+; -1.272 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~16  ; clk          ; clk         ; 1.000        ; -0.003     ; 2.301      ;
+; -1.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~23 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.320      ;
+; -1.271 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~22 ; clk          ; clk         ; 1.000        ; 0.017      ; 2.320      ;
+; -1.265 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.297      ;
++--------+--------------------------------------------------------------------------------+-----------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Hold: 'clk'                                                                                                                                                                                                                        ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                                                                      ; To Node                                                                        ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_start_clk                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.NEGEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.NEGEDGE_CLK                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_state[4]                                                ; zrb_sd_core:spi_core|r_state[4]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_state[2]                                                ; zrb_sd_core:spi_core|r_state[2]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_state[1]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_state[0]                                                ; zrb_sd_core:spi_core|r_state[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_start[0]                                                ; zrb_sd_core:spi_core|r_start[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|rd_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.215 ; zrb_sd_core:spi_core|r_data[1]                                                 ; zrb_sd_core:spi_core|r_data[1]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.367      ;
+; 0.237 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~12    ; zrb_sd_core:spi_core|r_data_out[4]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.389      ;
+; 0.239 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[7]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.391      ;
+; 0.245 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.397      ;
+; 0.246 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.398      ;
+; 0.247 ; zrb_sd_core:spi_core|r_start[7]                                                ; zrb_sd_core:spi_core|r_start[7]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.247 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.247 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[1]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.399      ;
+; 0.272 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.424      ;
+; 0.273 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.425      ;
+; 0.313 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rx                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; clk          ; clk         ; 0.000        ; 0.025      ; 0.490      ;
+; 0.315 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.467      ;
+; 0.316 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.468      ;
+; 0.345 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.497      ;
+; 0.353 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.505      ;
+; 0.354 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.506      ;
+; 0.354 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[9]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[9]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 0.506      ;
+; 0.355 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.507      ;
+; 0.355 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.507      ;
+; 0.356 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.508      ;
+; 0.356 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.508      ;
+; 0.358 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.510      ;
+; 0.359 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.511      ;
+; 0.359 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.511      ;
+; 0.360 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_RD                  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.512      ;
+; 0.361 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.513      ;
+; 0.362 ; zrb_sd_core:spi_core|r_start[5]                                                ; zrb_sd_core:spi_core|r_start[5]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.514      ;
+; 0.362 ; zrb_sd_core:spi_core|r_start[3]                                                ; zrb_sd_core:spi_core|r_start[3]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.514      ;
+; 0.364 ; zrb_sd_core:spi_core|r_start[0]                                                ; zrb_sd_core:spi_core|r_start[1]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.516      ;
+; 0.365 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~10    ; zrb_sd_core:spi_core|r_data_out[2]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.517      ;
+; 0.365 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[0]                            ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_cnt[2]                            ; clk          ; clk         ; 0.000        ; 0.000      ; 0.517      ;
+; 0.367 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.367 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.367 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[8]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[8]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.367 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[7]                      ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[7]                      ; clk          ; clk         ; 0.000        ; 0.000      ; 0.519      ;
+; 0.368 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.SET_CLK_WR                  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; clk          ; clk         ; 0.000        ; 0.000      ; 0.520      ;
+; 0.369 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.369 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.IDLE                        ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_tx                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.521      ;
+; 0.370 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.522      ;
+; 0.373 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.525      ;
+; 0.375 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_rd                                ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|rd_ptr[0]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.527      ;
+; 0.376 ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[3]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.528      ;
+; 0.376 ; zrb_sd_core:spi_core|r_start[2]                                                ; zrb_sd_core:spi_core|r_start[2]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.528      ;
+; 0.378 ; zrb_sd_core:spi_core|r_start[6]                                                ; zrb_sd_core:spi_core|r_start[6]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.530      ;
+; 0.378 ; zrb_sd_core:spi_core|r_start[4]                                                ; zrb_sd_core:spi_core|r_start[4]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.530      ;
+; 0.379 ; zrb_sd_core:spi_core|r_state[1]                                                ; zrb_sd_core:spi_core|r_state[0]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.531      ;
+; 0.380 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|mem~5     ; zrb_sd_core:spi_core|r_data_out[5]                                             ; clk          ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.380 ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[2]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.380 ; zrb_sd_core:spi_core|r_rd[0]                                                   ; zrb_sd_core:spi_core|r_rd[1]                                                   ; clk          ; clk         ; 0.000        ; 0.000      ; 0.532      ;
+; 0.381 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.533      ;
+; 0.381 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[0] ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:output_fifo|wr_ptr[2] ; clk          ; clk         ; 0.000        ; 0.000      ; 0.533      ;
+; 0.383 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[27]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.535      ;
+; 0.384 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.536      ;
+; 0.388 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.540      ;
+; 0.390 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[28]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.542      ;
+; 0.394 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[5]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.546      ;
+; 0.394 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[0]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.546      ;
+; 0.394 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[2]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.546      ;
+; 0.395 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.547      ;
+; 0.396 ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; zrb_sd_core:spi_core|r_cnt_power_on[1]                                         ; clk          ; clk         ; 0.000        ; 0.000      ; 0.548      ;
+; 0.396 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[0]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.548      ;
+; 0.400 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[6]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.552      ;
+; 0.401 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[3]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.553      ;
+; 0.401 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_data[2]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.553      ;
+; 0.402 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[7]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.554      ;
+; 0.402 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[1]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.554      ;
+; 0.402 ; zrb_sd_core:spi_core|r_cnt_power_on[0]                                         ; zrb_sd_core:spi_core|r_data[6]                                                 ; clk          ; clk         ; 0.000        ; 0.000      ; 0.554      ;
+; 0.402 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_state.POSEDGE_CLK                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|r_data[4]                           ; clk          ; clk         ; 0.000        ; 0.000      ; 0.554      ;
+; 0.404 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[1]  ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|wr_ptr[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 0.556      ;
+; 0.426 ; zrb_sd_core:spi_core|r_data[1]                                                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~5      ; clk          ; clk         ; 0.000        ; 0.000      ; 0.578      ;
+; 0.434 ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26]                     ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26]                     ; clk          ; clk         ; 0.000        ; 0.000      ; 0.586      ;
+; 0.436 ; zrb_sd_core:spi_core|r_data[6]                                                 ; zrb_sd_core:spi_core|zrb_spi_rxtx:spi_rxtx|zrb_sync_fifo:input_fifo|mem~6      ; clk          ; clk         ; 0.000        ; 0.001      ; 0.589      ;
+; 0.436 ; zrb_sd_core:spi_core|r_start[1]                                                ; zrb_sd_core:spi_core|r_start[1]                                                ; clk          ; clk         ; 0.000        ; 0.000      ; 0.588      ;
++-------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Fast Model Minimum Pulse Width: 'clk'                                                                                                       ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+; Slack  ; Actual Width ; Required Width ; Type             ; Clock ; Clock Edge ; Target                                                     ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+; -1.380 ; 1.000        ; 2.380          ; Port Rate        ; clk   ; Rise       ; clk                                                        ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[0]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[0]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[1]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[1]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[2]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[2]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[3]                     ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_cnt_power_on[3]                     ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[0]                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[0]                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[1]                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[1]                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[2]                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[2]                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[6]                             ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data[6]                             ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[0]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[0]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[1]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[1]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[2]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[2]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[3]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[3]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[4]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[4]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[5]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[5]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[6]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[6]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[7]                         ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_data_out[7]                         ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[0]                               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[0]                               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[1]                               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_rd[1]                               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[0]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[0]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[1]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[1]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[2]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[2]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[3]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[3]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[4]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[4]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[5]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[5]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[6]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[6]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[7]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_start[7]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[0]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[0]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[1]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[1]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[2]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[2]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[3]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[3]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[4]                            ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_state[4]                            ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[0]                               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[0]                               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[1]                               ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|r_wr[1]                               ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[10] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[11] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[12] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[13] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[13] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[14] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[15] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[16] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[16] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[17] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[18] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[19] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[20] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[21] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[22] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[23] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[24] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25] ;
+; -0.500 ; 0.500        ; 1.000          ; Low Pulse Width  ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[25] ;
+; -0.500 ; 0.500        ; 1.000          ; High Pulse Width ; clk   ; Rise       ; zrb_sd_core:spi_core|zrb_clk_generator:spi_clkgen|r_tx[26] ;
++--------+--------------+----------------+------------------+-------+------------+------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; spi_in    ; clk        ; 2.311 ; 2.311 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; spi_in    ; clk        ; -2.191 ; -2.191 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Clock to Output Times                                                 ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; cs        ; clk        ; 5.006 ; 5.006 ; Rise       ; clk             ;
+; led       ; clk        ; 5.334 ; 5.334 ; Rise       ; clk             ;
+; sck       ; clk        ; 4.139 ; 4.139 ; Rise       ; clk             ;
+; spi_out   ; clk        ; 3.969 ; 3.969 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; cs        ; clk        ; 4.581 ; 4.581 ; Rise       ; clk             ;
+; led       ; clk        ; 4.398 ; 4.398 ; Rise       ; clk             ;
+; sck       ; clk        ; 4.139 ; 4.139 ; Rise       ; clk             ;
+; spi_out   ; clk        ; 3.969 ; 3.969 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                            ;
++------------------+----------+-------+----------+---------+---------------------+
+; Clock            ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+----------+-------+----------+---------+---------------------+
+; Worst-case Slack ; -6.457   ; 0.215 ; N/A      ; N/A     ; -1.941              ;
+;  clk             ; -6.457   ; 0.215 ; N/A      ; N/A     ; -1.941              ;
+; Design-wide TNS  ; -631.167 ; 0.0   ; 0.0      ; 0.0     ; -205.249            ;
+;  clk             ; -631.167 ; 0.000 ; N/A      ; N/A     ; -205.249            ;
++------------------+----------+-------+----------+---------+---------------------+
+
+
++-----------------------------------------------------------------------+
+; Setup Times                                                           ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; spi_in    ; clk        ; 5.100 ; 5.100 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Hold Times                                                              ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; spi_in    ; clk        ; -2.191 ; -2.191 ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-------------------------------------------------------------------------+
+; Clock to Output Times                                                   ;
++-----------+------------+--------+--------+------------+-----------------+
+; Data Port ; Clock Port ; Rise   ; Fall   ; Clock Edge ; Clock Reference ;
++-----------+------------+--------+--------+------------+-----------------+
+; cs        ; clk        ; 11.954 ; 11.954 ; Rise       ; clk             ;
+; led       ; clk        ; 12.873 ; 12.873 ; Rise       ; clk             ;
+; sck       ; clk        ; 9.325  ; 9.325  ; Rise       ; clk             ;
+; spi_out   ; clk        ; 8.831  ; 8.831  ; Rise       ; clk             ;
++-----------+------------+--------+--------+------------+-----------------+
+
+
++-----------------------------------------------------------------------+
+; Minimum Clock to Output Times                                         ;
++-----------+------------+-------+-------+------------+-----------------+
+; Data Port ; Clock Port ; Rise  ; Fall  ; Clock Edge ; Clock Reference ;
++-----------+------------+-------+-------+------------+-----------------+
+; cs        ; clk        ; 4.581 ; 4.581 ; Rise       ; clk             ;
+; led       ; clk        ; 4.398 ; 4.398 ; Rise       ; clk             ;
+; sck       ; clk        ; 4.139 ; 4.139 ; Rise       ; clk             ;
+; spi_out   ; clk        ; 3.969 ; 3.969 ; Rise       ; clk             ;
++-----------+------------+-------+-------+------------+-----------------+
+
+
++-------------------------------------------------------------------+
+; Setup Transfers                                                   ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 2191     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
++-------------------------------------------------------------------+
+; Hold Transfers                                                    ;
++------------+----------+----------+----------+----------+----------+
+; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
++------------+----------+----------+----------+----------+----------+
+; clk        ; clk      ; 2191     ; 0        ; 0        ; 0        ;
++------------+----------+----------+----------+----------+----------+
+Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 1     ; 1    ;
+; Unconstrained Output Ports      ; 4     ; 4    ;
+; Unconstrained Output Port Paths ; 12    ; 12   ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II TimeQuest Timing Analyzer
+    Info: Version 11.0 Build 157 04/27/2011 SJ Full Version
+    Info: Processing started: Mon Jan 21 22:55:53 2013
+Info: Command: quartus_sta spi_sd -c spi_sd
+Info: qsta_default_script.tcl version: #1
+Info: Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info: Low junction temperature is 0 degrees C
+Info: High junction temperature is 85 degrees C
+Critical Warning: Synopsys Design Constraints File file not found: 'spi_sd.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info: No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info: Deriving Clocks
+    Info: create_clock -period 1.000 -name clk clk
+Info: Analyzing Slow Model
+Critical Warning: Timing requirements not met
+Info: Worst-case setup slack is -6.457
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -6.457      -631.167 clk 
+Info: Worst-case hold slack is 0.499
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     0.499         0.000 clk 
+Info: No Recovery paths to report
+Info: No Removal paths to report
+Info: Worst-case minimum pulse width slack is -1.941
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -1.941      -205.249 clk 
+Info: The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info: Started post-fitting delay annotation
+Warning: Found 4 output pins without output pin load capacitance assignment
+    Info: Pin "spi_out" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "cs" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "sck" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "led" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+Info: Delay annotation completed successfully
+Critical Warning: Timing requirements not met
+Info: Worst-case setup slack is -1.417
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -1.417      -116.473 clk 
+Info: Worst-case hold slack is 0.215
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:     0.215         0.000 clk 
+Info: No Recovery paths to report
+Info: No Removal paths to report
+Info: Worst-case minimum pulse width slack is -1.380
+    Info:     Slack End Point TNS Clock 
+    Info: ========= ============= =====================
+    Info:    -1.380      -138.380 clk 
+Info: The selected device family is not supported by the report_metastability command.
+Info: Design is not fully constrained for setup requirements
+Info: Design is not fully constrained for hold requirements
+Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 254 megabytes
+    Info: Processing ended: Mon Jan 21 22:55:55 2013
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
