@@ -100,8 +100,8 @@ module zrb_spi_rxtx
 /*
 zrb_spi_rxtx #(8) instance_name
     (
-	CLK,
-	RESET,
+    CLK,
+    RESET,
     CLK_EN,
     SPI_IN,
     NEW_DATA,
@@ -117,23 +117,23 @@ zrb_spi_rxtx #(8) instance_name
     INPUT_EMPTY,
     OUTPUT_EMPTY,
     RXTX_STATE
-	);
+    );
 */
-	#(parameter NUM_BITS = 8)
-	(
-	input	wire				clk,
-	input	wire				reset,
+    #(parameter NUM_BITS = 8)
+    (
+    input   wire                clk,
+    input   wire                reset,
     input   wire                clk_en,
 
-	input	wire				spi_in,
-	input	wire				new_data,
-	input	wire	[  NUM_BITS-1 :  0 ] data_in,
-    output	wire				spi_out,
+    input   wire                spi_in,
+    input   wire                new_data,
+    input   wire    [  NUM_BITS-1 :  0 ] data_in,
+    output  wire                spi_out,
 
     input   wire                read_imp,
-	output	wire	[  NUM_BITS-1 :  0 ] data_out,
-  	output  wire				cs,
-	output	wire				sck,
+    output  wire    [  NUM_BITS-1 :  0 ] data_out,
+    output  wire                cs,
+    output  wire                sck,
 
     output  wire                start_clk,
     output  wire                spi_input_full,
@@ -142,7 +142,7 @@ zrb_spi_rxtx #(8) instance_name
     output  wire                spi_output_empty,
     output  wire    [  2 :  0 ] spi_state
     
-	);
+    );
 
 reg     [  3 :  0 ] r_cnt = 4'b0;
 reg                 r_rd = 1'b0;
@@ -302,8 +302,8 @@ zrb_sd_core #(8) spi_core (
     sck
     );
 */
-	#(parameter NUM_BITS = 8)
-	(
+    #(parameter NUM_BITS = 8)
+    (
     input   wire                clk,
     
     input   wire    [  7 :  0 ] data_in,
@@ -322,26 +322,23 @@ reg         [  7 :  0 ] r_data = 8'd100;
 reg         [  7 :  0 ] r_data_out = 8'b0;
 reg         [  3 :  0 ] r_cnt_power_on = 4'b0;
 reg         [  1 :  0 ] r_wr = 2'b0;
-reg                     r_wr_imp = 1'b0;
 wire                    wr_en = r_wr == 2'b01;
 reg         [  1 :  0 ] r_rd = 2'b0;
-reg                     r_rd_imp = 1'b0;
 wire                    rd_en = r_rd == 2'b01;
-localparam  [  4 :  0 ] IDLE =       5'b00000,
+localparam  [  4 :  0 ] START =      5'b00000,
                         POWER_ON =   5'b00001,
                         SOFT_RESET = 5'b00010,
                         WAIT_RESP =  5'b00100,
                         INIT_SD =    5'b01000,
                         INIT_END =   5'b10000,
                         NORMAL_WORK= 5'b11000;
-reg         [  4 :  0 ] r_state = IDLE;
-reg         [  2 :  0 ] r_start = 3'b111;
+reg         [  4 :  0 ] r_state = START;
+reg         [  7 :  0 ] r_start = 8'd0;
 //wire                    w_wr_en = r_wr & ~w_input_full;
 
 wire w_clk_out;
 wire w_srart_clk;
-zrb_clk_generator #(50000000,5000000) spi_clkgen(clk, ~w_start_clk, 1'b1, w_clk_out);
-
+wire w_not_s_clk = ~w_start_clk;
 wire w_ss;
 wire w_input_full;
 wire w_output_full;
@@ -350,10 +347,12 @@ wire w_output_empty;
 wire [2:0] spi_state;
 wire [7:0] w_data_out;
 
+
+
 zrb_spi_rxtx #(8) spi_rxtx
     (
-	clk,
-	1'b0,
+    clk,
+    1'b0,
     w_clk_out,
     miso,
     wr_en,
@@ -369,9 +368,9 @@ zrb_spi_rxtx #(8) spi_rxtx
     w_input_empty,
     w_output_empty,
     spi_state
-	);
+    );
 
-
+zrb_clk_generator #(50000000,5000000) spi_clkgen(clk, ~w_start_clk, 1'b1, w_clk_out);
 
 
 always@(posedge clk)
@@ -384,14 +383,14 @@ begin
     if(rd_en)
     begin
         case(r_state)
-            WAIT_RESP: r_data_out <= w_data_out;
-            default: r_data_out <= 8'b0;
+            WAIT_RESP, INIT_END: r_data_out <= w_data_out;
+            default: begin end
         endcase
     end
     
     case(r_state)
-        IDLE:
-            if(r_start == 3'b0)
+        START:
+            if(r_start == 8'd255)
                 r_state <= POWER_ON;
         POWER_ON:
             if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
@@ -403,6 +402,7 @@ begin
             if(r_data_out == 8'd1)
                 r_state <= INIT_SD;
             else
+            if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
                 r_state <= POWER_ON;
         INIT_SD:
             if((r_cnt_power_on == 4'd6) & (spi_state == 3'b000))
@@ -411,21 +411,23 @@ begin
             if(r_data_out == 8'd0)
                 r_state <= NORMAL_WORK;
             else
+            if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
                 r_state <= POWER_ON;
+        NORMAL_WORK: begin end
     endcase
     
     case(r_state)
-        IDLE:
+        START:
             begin
-                r_start <= r_start - 1'b1;
+                r_start <= r_start + 1'b1;
                 r_cnt_power_on <= 4'd0;
                 r_wr <= 2'b0;
                 r_rd <= 2'b0;
             end
-        POWER_ON, WAIT_RESP:
+        POWER_ON:
             begin
                 r_wr <= {r_wr[0], 1'b0};
-                r_data <= 8'd1;//8'd255;
+                r_data <= 8'd255;
                 if((~w_input_full) & (r_wr == 2'b00) & (r_cnt_power_on != 4'd10))
                     r_wr <= {r_wr[0], 1'b1};
                 if(r_wr == 2'b10)
@@ -434,7 +436,7 @@ begin
                     r_cnt_power_on <= 4'd0;
 
             end
-        SOFT_RESET:
+        SOFT_RESET, INIT_SD:
             begin
                 r_wr <= {r_wr[0], 1'b0};
                 if(~w_input_full & (r_wr == 2'b00) & (r_cnt_power_on != 4'd6))
@@ -445,7 +447,7 @@ begin
                     r_cnt_power_on <= 4'd0;
 
                 case(r_cnt_power_on)
-                    4'd0: r_data <= 8'h40;
+                    4'd0: r_data <= r_state == SOFT_RESET ? 8'h40 : 8'h41;
                     4'd1: r_data <= 8'h00;
                     4'd2: r_data <= 8'h00;
                     4'd3: r_data <= 8'h00;
@@ -454,15 +456,28 @@ begin
                 endcase
 
             end
-            
-        INIT_SD:
+        WAIT_RESP, INIT_END:
             begin
-                r_wr <= 1'b0;
-                r_data <= 8'hAA;
+                r_data <= 8'd255;
+                r_wr <= {r_wr[0], 1'b0};
+                if(r_state == WAIT_RESP)
+                    if((r_data_out != 8'd1) & (spi_state == 3'b000))
+                        r_wr <= {r_wr[0], 1'b1};
+
+                if(r_state == INIT_END)
+                    if((r_data_out != 8'd0) & (spi_state == 3'b000))
+                        r_wr <= {r_wr[0], 1'b1};
+                if(r_wr == 2'b10)
+                    r_cnt_power_on <= r_cnt_power_on + 1'b1;
+                if((r_cnt_power_on == 4'd10) & (spi_state == 3'b000))
+                    r_cnt_power_on <= 4'd0;                    
             end
+
+        NORMAL_WORK: begin end
     endcase
 end
 
 
-assign ss = r_state == IDLE ? 1'b1 : 1'b0;
+assign ss = r_state == (START | POWER_ON) ? 1'b1 : 1'b0;
+assign data_out = r_data_out;
 endmodule
